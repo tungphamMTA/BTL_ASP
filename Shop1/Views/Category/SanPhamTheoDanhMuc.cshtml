@@ -1,0 +1,241 @@
+﻿@using PagedList.Mvc;
+@using Shop1.Models;
+@model PagedList.PagedList<SanPham>
+@{
+    ViewBag.Title = "Shop";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<div class="slider-area home2">
+        <div class="bend niceties preview-2">
+            <div id="nivoslider" class="slides">
+                <img src="~/Content/img/slider/slider-7.jpg" alt="" title="#slider-direction-1" />
+                <img src="~/Content/img/slider/slider-12.jpg" alt="" title="#slider-direction-2" />
+
+                <img src="~/Content/img/slider/slider-8.jpg" alt="" title="#slider-direction-2" />
+            </div>
+
+        </div>
+    </div>*@
+<!-- product items banner end -->
+<!-- product main items area start -->
+<div class="product-main-items">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="location">
+                    <ul>
+                        <li><a href="index.html" title="go to homepage">Home<span>/</span></a>  </li>
+                        <li><a href="/Home/Shop" title="go to shoppage"><strong> Shop / </strong></li></a>
+                        <li><a href="/Home/Shop/@ViewBag.hangsx" title="go to shoppage"><strong> @ViewBag.hangsx </strong></li></a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="product-sidebar">
+                    <div class="sidebar-title">
+                        <h2> Bộ lọc</h2>
+                    </div>
+
+                    @*<div class="single-sidebar">
+                            <div class="single-sidebar-title">
+                                <h3>Màu</h3>
+                            </div>
+                            <div class="single-sidebar-content">
+                                <ul>
+                                    <li><a href="#">Đen (2)</a></li>
+                                    <li><a href="#">Xanh lơ (2)</a></li>
+                                    <li><a href="#">Xanh lá (4)</a></li>
+                                    <li><a href="#">Xám (2)</a></li>
+                                </ul>
+                            </div>
+                        </div>*@
+                    <div class="single-sidebar">
+                        <div class="single-sidebar-title">
+                            <h3>Hãng sản xuất</h3>
+                        </div>
+                        <div>
+                            @Html.Action("DanhMucHSXPartial", "Category")
+                        </div>
+
+                    </div>
+                    <div class="single-sidebar price">
+                        <div class="single-sidebar-title">
+                            <h3>Giá</h3>
+                        </div>
+                        <div class="single-sidebar-content">
+                            <div class="price-range">
+                                <div class="price-filter">
+                                    <div id="slider-range"></div>
+                                    <div class="price-slider-amount">
+                                        <input type="text" id="amount" name="price" placeholder="Add Your Price" />
+                                    </div>
+                                </div>
+                                <button type="submit"> <span>Tìm kiếm</span> </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="banner-left">
+                        <a href="#">
+                            <img src="~/Content/img/product/banner_left.jpg" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="product-bar">
+                    <ul class="product-navigation" role="tablist">
+                        <li role="presentation" class="active gird">
+
+                            <a href="#gird" aria-controls="gird" role="tab" data-toggle="tab">
+                                <span>
+                                    <img class="primary" src="~/Content/img/product/grid-primary.png" alt="">
+                                    <img class="secondary" src="~/Content/img/product/grid-secondary.png" alt="">
+                                </span>
+                                Gird
+                            </a>
+                        </li>
+                        <li role="presentation" class="list">
+                            <a href="#list" aria-controls="list" role="tab" data-toggle="tab">
+                                <span>
+                                    <img class="primary" src="~/Content/img/product/list-primary.png" alt="">
+                                    <img class="secondary" src="~/Content/img/product/list-secondary.png" alt="">
+                                </span>
+                                List
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="sort-by">
+                        <label>Sắp xếp theo</label>
+                        <select name="sort">
+                            <option value="#" selected>Vị trí</option>
+                            <option value="#">Tên</option>
+                            <option value="#">Giá</option>
+                        </select>
+                        <a href="#" title="Set Descending Direction">
+                            <img src="~/Content/img/product/i_asc_arrow.gif" alt="">
+                        </a>
+                    </div>
+                    <div class="limit-product">
+                        <label>Hiện</label>
+                        <select name="show">
+                            <option value="#" selected>6</option>
+                            <option value="#">9</option>
+                            <option value="#">12</option>
+                            <option value="#">15</option>
+                        </select>
+                        Mỗi trang
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="product-content">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active fade in home2" id="gird">
+
+                                @foreach (SanPham item in Model)
+                                {
+                                    <div class="col-lg-4 col-sm-6">
+                                        <div class="single-product">
+                                            <div class="level-pro-new">
+                                                <span>Mới</span>
+                                            </div>
+                                            <div class="product-img">
+                                                <a href="single-product.html">
+                                                    <img src="~/Content/img/Shoes/@item.AnhDaiDien" alt="" class="primary-img">
+                                                    <img src="~/Content/img/Shoes/@item.AnhNen" alt="" class="secondary-img">
+                                                </a>
+                                            </div>
+                                            <div class="actions">
+                                                <button type="submit" class="cart-btn" title="Add to cart">Thêm vào giỏ hàng</button>
+                                                <ul class="add-to-link">
+                                                    <li><a class="modal-view" data-target="#productModal" data-toggle="modal" href="#"> <i class="fa fa-search"></i></a></li>
+                                                    <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
+                                                    <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="product-price">
+                                                <div class="product-name">
+                                                    <a href="single-product.html" title="Fusce aliquam">@item.TenSP</a>
+                                                </div>
+                                                <div class="price-rating">
+                                                    <span>$@item.GiaTien</span>
+                                                    <div class="ratings">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-half-o"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade home2" id="list">
+                                <div class="product-catagory">
+                                    @foreach (SanPham item in Model)
+                                    {
+                                        <div class="single-list-product">
+                                            <div class="col-sm-4">
+                                                <div class="list-product-img">
+                                                    <a href="single-product.html">
+                                                        <img src="~/Content/img/product/1.png" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <div class="list-product-info">
+                                                    <a href="single-product.html" class="list-product-name">@item.TenSP</a>
+                                                    <div class="price-rating">
+                                                        <span class="old-price">$@item.GiaGoc</span>
+                                                        <span>$ @item.GiaTien</span>
+                                                        <div class="ratings">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-half-o"></i>
+                                                            <a href="#" class="review">1 Đánh giá</a>
+                                                            <a href="#" class="add-review">Thêm đánh giá</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="list-product-details">
+                                                        <p>
+                                                            Từ lúc tập luyện tới ngày thi đấu, hãy tự tin tiến bước. Đôi giày chạy bộ này tăng cường ổn định nhờ hệ thống adidas LEP 2.0 giúp định hướng từng cú đáp chân và tạo đà tiến về phía trước. Thân giày bằng vải lưới có các vùng cố định tập trung giúp tăng cường nâng đỡ đồng thời duy trì thoáng khí. Lớp đệm BOOST hoàn trả năng lượng và mang lại cảm giác thoải mái giúp bạn luôn cảm thấy sảng khoái trên suốt đường chạy.
+                                                            <a href="single-product.html">Tìm hiểu thêm</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pagination-bar">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <div class="text"> Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) của @Model.PageCount</div>
+                            </div>
+
+                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                <div class="pagination">
+                                    <ul class="page-list">
+                                        <li>@Html.PagedListPager(Model, page => Url.Action("SanPhamTheoDanhMuc", new { page }))</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

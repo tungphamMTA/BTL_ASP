@@ -1,0 +1,136 @@
+﻿@using Shop1.Models;
+@model SanPham
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutPage1.cshtml";
+
+}
+
+<div class="content-fluid" id="create">
+    <h2>Edit</h2>
+    <div style="
+    margin-left: 30%;
+">
+        <form action="/Admin/ManageProducts/Create" method="post" id="formEdit">
+            <div class="form-group row">
+                <label class="col-lg-offset-2 col-lg-2 col-form-label form-control-label">
+                    Mã giày
+                </label>
+                <div class="col-lg-5">
+                    <input class="form-control" type="text" value=@Model.MaSP name="MaSP">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-offset-2 col-lg-2 col-form-label form-control-label">
+                    Tên giày
+                </label>
+                <div class="col-lg-5">
+                    <input class="form-control" type="text" value=@Model.TenSP name="TenSP">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-offset-2 col-lg-2 form-control-label">Hãng sản xuất</label>
+                <div class="col-lg-5">
+                    <select name="HangSX">
+                        @foreach (HangSanXuat it in ViewBag.HangSX)
+                        {
+                            if (it.HangSX == Model.HangSX.ToString())
+                            {
+                                <option class="form-control"  value=@it.HangSX selected>@it.TenHang</option>
+
+                            }
+                            <option class="form-control" value=@it.HangSX>@it.TenHang</option>
+                        }
+
+                    </select>
+                    @*<input class="form-control" type="text" value="" name="HangSX">*@
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-offset-2 col-lg-2 form-control-label">Xuất xứ</label>
+                <div class="col-lg-5">
+                    <input class="form-control" type="text" value=@Model.XuatXu name="XuatXu">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-offset-2 col-lg-2 form-control-label">Giá nhập</label>
+                <div class="col-lg-5">
+                    <input class="form-control" type="text" value=@Model.GiaGoc name="GiaGoc">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-offset-2 col-lg-2 form-control-label">Giá bán</label>
+                <div class="col-lg-5">
+                    <input class="form-control" type="text" value=@Model.GiaTien name="GiaTien">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-offset-2 col-lg-2 form-control-label">Số lượng</label>
+                <div class="col-lg-5">
+                    <input class="form-control" type="text" value=@Model.SoLuong name="SoLuong">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-offset-2 col-lg-2 form-control-label">Choose pictures</label>
+                <div class="col-lg-5">
+                    <input class="form-control" type="file" accept="image/png, image/jpeg" value="" name="" id="input-file-image">
+                    <input class="form-control" type="text" name="AnhDaiDien" id="input-image" style="display: none">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-offset-2 col-lg-2 form-control-label"></label>
+                <div class="col-lg-5">
+                    <input type="reset" class="btn btn-secondary" value="Reset">
+                    <input type="button" class="btn btn-primary SAVE" value="Save Changes" onclick="Change()">
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<script src="~/Content/admin/js/JavaScript.js"></script>
+<script src="/Content/admin/js/jquery.min.js"></script>
+<script>
+    function Change() {
+
+        var data = $("#formEdit").serialize();
+        $.ajax({
+            url: "/Admin/ManageProducts/Edit",
+            type: "POST",
+            data: data,
+            enctype: "multipart/form-data",
+            processData: false,
+            success: function (response) {
+                console.log(response);
+                if (response.message == "Success!") {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Your item has been saved',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                    setTimeout(window.location.href = "/Admin/ManageProducts/Index", 300000);
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'OOPS',
+                        text: 'Something went wrong!'
+                    })
+                }
+            },
+            error: function (err) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'OOPS',
+                    text: err
+                })
+            }
+        });
+    }
+
+    $("input[type=file]").change(function () {
+        document.getElementById('input-image').value = document.getElementById('input-file-image').files[0].name;
+    });
+</script>
+

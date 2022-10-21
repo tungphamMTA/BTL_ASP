@@ -1,0 +1,15 @@
+﻿@using Shop1.Models;
+@model List<HangSanXuat> 
+
+<div class="single-sidebar-content">
+    <ul>
+        @foreach (var item in Model)
+        {
+
+            <li role="presentation"><a href="@Url.Action("SanPhamTheoDanhMuc", "Category",new { @id = item.TenHang } )">@item.TenHang</a></li>
+        }
+
+
+    </ul>
+</div>
+
