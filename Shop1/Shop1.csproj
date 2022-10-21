@@ -150,6 +150,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ManageBrandsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ManageOrdersController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageProductsController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -490,6 +492,10 @@
     <Content Include="Areas\Admin\Views\Shared\_LayoutPage1.cshtml" />
     <Content Include="Areas\Admin\Views\ManageProducts\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ManageProducts\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ManageOrders\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ManageBrands\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ManageBrands\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ManageBrands\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

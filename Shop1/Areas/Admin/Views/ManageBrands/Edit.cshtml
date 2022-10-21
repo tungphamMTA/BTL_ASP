@@ -1,0 +1,94 @@
+﻿@using Shop1.Models;
+@model HangSanXuat
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="content-fluid" id="edit">
+    <div style="
+    margin-left: 30%;
+">
+        <form action="/Admin/ManageBrands/Edit" method="post" id="formEdit">
+            <div class="form-group row">
+                <label class="col-lg-offset-2 col-lg-2 col-form-label form-control-label" for="HangSX">
+                    Brand ID
+                </label>
+                <div class="col-lg-5">
+                    <input class="form-control" type="text" value="@Model.HangSX" name="HangSX">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-offset-2 col-lg-2 col-form-label form-control-label" for="TenHang">
+                    Brand Name
+                </label>
+                <div class="col-lg-5">
+                    <input class="form-control" type="text" value="@Model.TenHang" name="TenHang">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-offset-2 col-lg-2 form-control-label" for="TruSoChinh">Headquarter</label>
+                <div class="col-lg-5">
+                    <input class="form-control" type="text" value="@Model.TruSoChinh" name="TruSoChinh">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-offset-2 col-lg-2 form-control-label" for="QuocGia">Nation</label>
+                <div class="col-lg-5">
+                    <input class="form-control" type="text" value="@Model.QuocGia" name="QuocGia">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-offset-2 col-lg-2 form-control-label"></label>
+                <div class="col-lg-5">
+                    <input type="reset" class="btn btn-secondary" value="Reset">
+                    <input type="button" class="btn btn-primary" value="Save Changes" onclick="Change()">
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+<script src="~/Content/admin/js/JavaScript.js"></script>
+<script>
+    function Change() {
+
+        var data = $("#formEdit").serialize();
+        $.ajax({
+            url: "/Admin/ManageBrands/Edit",
+            type: "POST",
+            data: data,
+            enctype: "multipart/form-data",
+            processData: false,
+            success: function (response) {
+                console.log(response);
+                if (response.message == "Success!") {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Your item has been saved',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                    setTimeout(window.location.href = "/Admin/ManageBrands/Index", 300000);
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'OOPS',
+                        text: 'Something went wrong!'
+                    })
+                }
+            },
+            error: function (err) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'OOPS',
+                    text: err
+                })
+            }
+        });
+    }
+
+</script>
+
+

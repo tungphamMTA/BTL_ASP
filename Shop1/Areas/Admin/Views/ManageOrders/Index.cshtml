@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+@*<div class="content-wrapper">*@
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">List of Orders</h2>
+                        <div class="table-responsive">
+                            <table class="table align-items-center table-flush table-borderless">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Order ID</th>
+                                        <th scope="col">Customer ID</th>
+                                        <th scope="col">Customer Name</th>
+                                        <th scope="col">Product ID</th>
+                                        <th scope="col">Product Name</th>
+                                        <th scope="col">Total Price</th>
+                                        <th scope="col">Shipping Fee</th>
+                                        <th scope="col">Shipping Status</th>
+                                        <th scope="col">Payment Method</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.MaDH</td>
+                                            <td>@item.MaKH</td>
+                                            <td>@item.HoTen</td>
+                                            <td>@item.MaSP</td>
+                                            <td>@item.TenSP</td>
+                                            <td>@item.TongTien</td>
+                                            <td>@item.PhiVanChuyen</td>
+                                            <td>@item.TinhTrangDH</td>
+                                            <td>@item.PTGiaoDich</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Row-->
+        <!--start overlay-->
+        <div class="overlay toggle-menu"></div>
+        <!--end overlay-->
+
+    </div>
+    <!-- End container-fluid-->
+
+@*</div>*@
+<script>
+    var tables = document.getElementsByTagName('table');
+    var table = tables[tables.length - 1];
+    var rows = table.rows;
+    for (var i = 1, td; i < rows.length; i++) {
+        td = document.createElement('td');
+        td.appendChild(document.createTextNode(i));
+        rows[i].insertBefore(td, rows[i].firstChild);
+    }
+</script>
+
+

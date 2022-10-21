@@ -1,0 +1,94 @@
+﻿@using Shop1.Models;
+@model List<HangSanXuat>
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="content-fluid" id="create">
+    <div style="
+    margin-left: 30%;
+">
+        <form action="/Admin/ManageBrands/Create" method="post" id="formCreate">
+            <div class="form-group row">
+                <label class="col-lg-offset-2 col-lg-2 col-form-label form-control-label" for="HangSX">
+                    Mã thương hiệu 
+                </label>
+                <div class="col-lg-5">
+                    <input class="form-control" type="text" value="" name="HangSX">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-offset-2 col-lg-2 col-form-label form-control-label" for="TenHang">
+                    Tên thương hiệu 
+                </label>
+                <div class="col-lg-5">
+                    <input class="form-control" type="text" value="" name="TenHang">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-offset-2 col-lg-2 form-control-label" for="TruSoChinh">Trụ sở chính</label>
+                <div class="col-lg-5">
+                    <input class="form-control" type="text" value="" name="TruSoChinh">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-offset-2 col-lg-2 form-control-label" for="QuocGia">Quốc gia</label>
+                <div class="col-lg-5">
+                    <input class="form-control" type="text" value="" name="QuocGia">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-offset-2 col-lg-1 form-control-label"></label>
+                <div class="col-lg-5">
+                    <input type="reset" class="btn btn-secondary" value="Reset">
+                    <input type="button" class="btn btn-primary SAVE" value="Save Changes" onclick="Check()">
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<script src="~/Content/admin/js/JavaScript.js"></script>
+<script>
+    function Check() {
+
+        var data = $("#formCreate").serialize();
+        $.ajax({
+            url: "/Admin/ManageBrands/Create/",
+            type: "POST",
+            data: data,
+            enctype: "multipart/form-data",
+            processData: false,
+            success: function (response) {
+                console.log(response);
+                if (response.message == "Success!") {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Your new brand has been saved',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                    setTimeout(window.location.href = "/Admin/ManageBrands/Index", 300000);
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'OOPS',
+                        text: 'Something went wrong!'
+                    })
+                }
+            },
+            error: function (err) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'OOPS',
+                    text: err
+                })
+            }
+        });
+    }
+</script>
+
+
