@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Shop1.Models;
 using Shop1.Controllers;
 using PagedList;
+using System.Dynamic;
 
 namespace Shop1.Controllers
 {

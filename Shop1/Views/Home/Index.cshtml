@@ -1,38 +1,120 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!-- slider area start -->
 <div class="slider-area home2">
     <div class="bend niceties preview-2">
         <div id="nivoslider" class="slides">
-            <img src="~/Content/img/slider/slider-7.jpg" alt="" title="#slider-direction-1" />
-            <img src="~/Content/img/slider/slider-12.jpg" alt="" title="#slider-direction-2" />
+            <img src="/Content/img/slider/slider-7.jpg" alt="" title="#slider-direction-1" />
+            <img src="/Content/img/slider/slider-12.jpg" alt="" title="#slider-direction-2" />
 
-            <img src="~/Content/img/slider/slider-8.jpg" alt="" title="#slider-direction-2" />
+            <img src="/Content/img/slider/slider-8.jpg" alt="" title="#slider-direction-2" />
         </div>
 
     </div>
 </div>
 <!-- slider area end -->
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+<!-- service area start -->
+<div class="service-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="single-service">
+                    <div class="sirvice-img">
+                        <img src="/Content/img/service/icon-1.png" alt="">
+                    </div>
+                    <div class="service-info">
+                        <h3>Miễn phí giao hàng</h3>
+                        <p>Phí giao hàng chưa bao giờ là vấn đề với công ty chúng tôi !</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="single-service">
+                    <div class="sirvice-img">
+                        <img src="/Content/img/service/icon-1.png" alt="">
+                    </div>
+                    <div class="service-info">
+                        <h3>Bảo hành 6 tháng</h3>
+                        <p>Mọi lỗi từ nhà sản xuất sẽ được cửa hàng thực hiện chính sách bảo hành</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="single-service">
+                    <div class="sirvice-img">
+                        <img src="/Content/img/service/icon-1.png" alt="">
+                    </div>
+                    <div class="service-info">
+                        <h3>Tư vấn 24/24</h3>
+                        <p>Bất cứ khi nào bạn cần hỗ trợ, chúng tôi đều trả lời bạn</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<!-- service area end -->
+
+<!-- feature products area start -->
+<div class="features-product-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="section-heading">
+                    <h2>BÁN CHẠY NHẤT</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="product-content">
+                @Html.Action("BestSellerProduct", "Product")
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- feature products area end -->
+<!-- sell off product area start -->
+<div class="features-product-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>SẢN PHẨM GIẢM GIÁ</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="product-content">
+                @Html.Action("SaleProduct", "Product")
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- sell off product area end -->
+<!-- new products area start -->
+<div class="new-products-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>SẢN PHẨM MỚI</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @Html.Action("NewProduct", "Product")
+        </div>
+
+    </div>
+</div>
+<!-- new products area end -->
+<!-- blog area end -->
