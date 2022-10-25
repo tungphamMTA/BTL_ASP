@@ -78,7 +78,6 @@ E:\Tung_hoc_tap\DiHocNam4\Ki41\CNWEB\BTL\ASP\Shop1\Shop1\bin\System.Net.Http.For
 E:\Tung_hoc_tap\DiHocNam4\Ki41\CNWEB\BTL\ASP\Shop1\Shop1\bin\System.Web.Http.xml
 E:\Tung_hoc_tap\DiHocNam4\Ki41\CNWEB\BTL\ASP\Shop1\Shop1\bin\System.Web.Http.WebHost.xml
 E:\Tung_hoc_tap\DiHocNam4\Ki41\CNWEB\BTL\ASP\Shop1\Shop1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\Tung_hoc_tap\DiHocNam4\Ki41\CNWEB\BTL\ASP\Shop1\Shop1\obj\Debug\Shop1.csproj.AssemblyReference.cache
 E:\Tung_hoc_tap\DiHocNam4\Ki41\CNWEB\BTL\ASP\Shop1\Shop1\obj\Debug\Shop1.csproj.CoreCompileInputs.cache
 E:\Tung_hoc_tap\DiHocNam4\Ki41\CNWEB\BTL\ASP\Shop1\Shop1\obj\Debug\Shop1.csproj.CopyComplete
 E:\Tung_hoc_tap\DiHocNam4\Ki41\CNWEB\BTL\ASP\Shop1\Shop1\obj\Debug\Shop1.dll
@@ -91,3 +90,4 @@ E:\Tung_hoc_tap\DiHocNam4\Ki41\CNWEB\BTL\ASP\Shop1\Shop1\bin\PagedList.dll
 E:\Tung_hoc_tap\DiHocNam4\Ki41\CNWEB\BTL\ASP\Shop1\Shop1\bin\PagedList.Mvc.dll
 E:\Tung_hoc_tap\DiHocNam4\Ki41\CNWEB\BTL\ASP\Shop1\Shop1\bin\PagedList.xml
 E:\Tung_hoc_tap\DiHocNam4\Ki41\CNWEB\BTL\ASP\Shop1\Shop1\bin\PagedList.Mvc.xml
+E:\Tung_hoc_tap\DiHocNam4\Ki41\CNWEB\BTL\ASP\Shop1\Shop1\obj\Debug\Shop1.csproj.AssemblyReference.cache

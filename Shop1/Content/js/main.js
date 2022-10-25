@@ -170,8 +170,8 @@ upsell-slider
     $( "#slider-range" ).slider({
     range: true,
     min: 100,
-    max: 750,
-    values: [ 100, 700 ],
+    max: 2000,
+    values: [ 100, 2000 ],
     slide: function( event, ui ) {
     $( "#amount" ).val( "" + ui.values[ 0 ] + " -- " + ui.values[ 1 ] );
     }

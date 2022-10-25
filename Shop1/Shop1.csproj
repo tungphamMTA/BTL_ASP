@@ -153,7 +153,7 @@
     <Compile Include="Areas\Admin\Controllers\ManageBrandsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageOrdersController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageProductsController.cs" />
-    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ManageUsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -496,6 +496,7 @@
     <Content Include="Areas\Admin\Views\ManageBrands\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ManageBrands\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ManageBrands\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ManageUsers\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -522,8 +523,10 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Shop.cshtml" />
-    <Content Include="Views\Category\DanhMucHSXPartial.cshtml" />
-    <Content Include="Views\Category\SanPhamTheoDanhMuc.cshtml" />
+    <Content Include="Views\Home\DanhMucHSXPartial.cshtml" />
+    <Content Include="Views\Home\SanPhamTheoDanhMuc.cshtml" />
+    <Content Include="Views\Home\DSSanPham.cshtml" />
+    <Content Include="Views\Home\BoLocSanPham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -664,7 +664,6 @@ body {
 
 .slider-area {
     position: relative;
-    top: -80px;
 }
 .preview-2 .nivo-controlNav {
     bottom: 10px;
@@ -713,6 +712,7 @@ body {
 }
 .slider-area.home2 .slider-content {
     bottom: -95px;
+    bottom:0px;
     left: 0px;
     right: 0px;
     margin: auto;
@@ -766,6 +766,9 @@ body {
 .slider-area.home2 .slider-2 a span:hover {
     color: #e03550;
     border-color: #e03550;
+}
+.slider-area {
+    position: relative;
 }
 
 /*----------------------------------------*/

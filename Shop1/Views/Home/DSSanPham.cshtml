@@ -1,0 +1,121 @@
+﻿@using PagedList.Mvc;
+@using Shop1.Models;
+@model PagedList.PagedList<SanPham>
+@{
+    ViewBag.Title = "Shop";
+    ViewBag.hangsx = ViewBag.hangsx;
+}
+
+                <div class="row">
+                    <div class="product-content">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active fade in home2" id="gird">
+
+                                @foreach (SanPham item in Model)
+                                {
+                                    <div class="col-lg-4 col-sm-6">
+                                        <div class="single-product">
+                                            @{
+                                                if (item.GiaSale == null)
+                                                {
+                                                    <div class="level-pro-new"><span>Mới</span></div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="level-pro-sale"><span>Sale</span></div>
+                                                }
+                                            }
+                                            <div class="product-img">
+                                                <a href="single-product.html">
+                                                    <img src="~/Content/img/Shoes/@item.AnhDaiDien" alt="" class="primary-img">
+                                                    <img src="~/Content/img/Shoes/@item.AnhNen" alt="" class="secondary-img">
+                                                </a>
+                                            </div>
+                                            <div class="actions">
+                                                <button type="submit" class="cart-btn" title="Add to cart">Add to cart</button>
+                                                <ul class="add-to-link">
+                                                    <li><a class="modal-view" data-target="#productModal" data-toggle="modal" href="#"> <i class="fa fa-search"></i></a></li>
+                                                    <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
+                                                    <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="product-price">
+                                                <div class="product-name">
+                                                    <a href="single-product.html" title="Fusce aliquam">@item.TenSP</a>
+                                                </div>
+                                                <div class="price-rating">
+                                                    <span>$@item.GiaTien</span>
+                                                    <div class="ratings">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-half-o"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade home2" id="list">
+                                <div class="product-catagory">
+                                    @foreach (SanPham item in Model)
+                                    {
+                                        <div class="single-list-product">
+                                            <div class="col-sm-4">
+                                                <div class="list-product-img">
+                                                    <a href="single-product.html">
+                                                        <img src="~/Content/img/Shoes/@item.AnhDaiDien" alt="" class="primary-img">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <div class="list-product-info">
+                                                    <a href="single-product.html" class="list-product-name">@item.TenSP</a>
+                                                    <div class="price-rating">
+                                                        <span class="old-price">$@item.GiaGoc</span>
+                                                        <span>$ @item.GiaTien</span>
+                                                        <div class="ratings">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-half-o"></i>
+                                                            <a href="#" class="review">1 Đánh giá</a>
+                                                            <a href="#" class="add-review">Thêm đánh giá</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="list-product-details">
+                                                        <p>
+                                                            @item.MoTa
+                                                            <a href="single-product.html">Tìm hiểu thêm</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pagination-bar">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <div class="text"> Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) của @Model.PageCount</div>
+                            </div>
+
+                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                <div class="pagination">
+                                    <ul class="page-list">
+                                        <li>@Html.PagedListPager(Model, page => Url.Action("BoLocSanPham", new { id = ViewBag.hangsx, gia= ViewBag.gia, page }));</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>

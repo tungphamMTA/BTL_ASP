@@ -1,0 +1,95 @@
+﻿@using Shop1.Models;
+@model List<AspNetUsers>
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutPage1.cshtml";
+}
+
+@*<div class="content-wrapper">*@
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">List of Users</h5>
+                        <div class="table-responsive">
+                            <table class="table align-items-center table-flush table-borderless">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Username</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">DOB</th>
+                                        <th scope="col">Gender</th>
+                                        <th scope="col">Address</th>
+                                        <th scope="col">Phone Number</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.UserName</td>
+                                            <td>@item.HoTen</td>
+                                            @if (@item.NgaySinh == null)
+                                            {
+                                                <td></td>
+                                            }
+                                            else
+                                            {
+                                                <td>@item.NgaySinh.Value.ToString("dd/MM/yyyy")</td>
+                                            }
+                                            <td>@item.GioiTinh</td>
+                                            <td>@item.DiaChi</td>
+                                            <td>@item.SDT</td>
+                                            <td data-toggle="tooltip" data-placement="top">
+                                                @*<button class="btn btn-success btn-sm rounded-0" type="submit" title="Info">
+                                                        <a href="~/Admin/ManageUsers/ShowDetailUser/@item.IDUser" class="fa fa-info"></a>
+                                                    </button>*@
+
+                                            </td>
+
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Row-->
+        <!--start overlay-->
+        <div class="overlay toggle-menu"></div>
+        <!--end overlay-->
+
+    </div>
+    <!-- End container-fluid-->
+
+@*</div>*@
+<script src="~/Content/admin/js/JavaScript.js"></script>
+<script>
+    var tables = document.getElementsByTagName('table');
+    var table = tables[tables.length - 1];
+    var rows = table.rows;
+    for (var i = 1, td; i < rows.length; i++) {
+        td = document.createElement('td');
+        td.appendChild(document.createTextNode(i));
+        rows[i].insertBefore(td, rows[i].firstChild);
+    }
+
+    var deleteLinks = document.querySelectorAll('.delete');
+
+    for (var i = 0; i < deleteLinks.length; i++) {
+        deleteLinks[i].addEventListener('click', function (event) {
+            event.preventDefault();
+
+            var choice = confirm(this.getAttribute('data-confirm'));
+
+            if (choice) {
+                window.location.href = this.getAttribute('href');
+            }
+        });
+    }
+</script>
+

@@ -3,11 +3,21 @@
 @model PagedList.PagedList<SanPham>
 @{
     ViewBag.Title = "Shop";
-    ViewBag.hangsx = "All";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@*<div class="slider-area home2">
+        <div class="bend niceties preview-2">
+            <div id="nivoslider" class="slides">
+                <img src="~/Content/img/slider/slider-7.jpg" alt="" title="#slider-direction-1" />
+                <img src="~/Content/img/slider/slider-12.jpg" alt="" title="#slider-direction-2" />
 
+                <img src="~/Content/img/slider/slider-8.jpg" alt="" title="#slider-direction-2" />
+            </div>
+
+        </div>
+    </div>*@
+<!-- product items banner end -->
 <!-- product main items area start -->
 <div class="product-main-items">
     <div class="container">
@@ -16,7 +26,8 @@
                 <div class="location">
                     <ul>
                         <li><a href="index.html" title="go to homepage">Home<span>/</span></a>  </li>
-                        <li><a href="/Home/Shop" title="go to shoppage"><strong> Shop /</strong></li></a>
+                        <li><a href="/Home/Shop" title="go to shoppage"><strong> Shop / </strong></li></a>
+                        <li><a href="/Home/Shop/@ViewBag.hangsx" title="go to shoppage"><strong> @ViewBag.hangsx </strong></li></a>
                     </ul>
                 </div>
             </div>
@@ -33,10 +44,12 @@
                                 <h3>Màu</h3>
                             </div>
                             <div class="single-sidebar-content">
-                                <select multiple="multiple">
-                                    <option><li><a href="#">Đen (2)</a></li></option>
-                                    <option><a href="#">Xanh lơ (2)</a></li></option><li>
-                                </select>
+                                <ul>
+                                    <li><a href="#">Đen (2)</a></li>
+                                    <li><a href="#">Xanh lơ (2)</a></li>
+                                    <li><a href="#">Xanh lá (4)</a></li>
+                                    <li><a href="#">Xám (2)</a></li>
+                                </ul>
                             </div>
                         </div>*@
                     <div class="single-sidebar">
@@ -54,17 +67,15 @@
                         </div>
                         <div class="single-sidebar-content">
                             <div class="price-range">
-                                @*<form action="/Home/BoLocGia" method="post" id="formPrice">*@
                                 <div class="price-filter">
                                     <div id="slider-range"></div>
                                     <div class="price-slider-amount">
-                                        <input type="text" id="amount" name="price" contextmenu="" placeholder="Add Your Price" />
+                                        <input type="text" id="amount" name="price" placeholder="Add Your Price" />
                                     </div>
                                 </div>
-                                <button type="button" onclick="Search()"> <span>Tìm kiếm</span> </button>
-                                @*</form>*@
-                            </div>
 
+                                <button type="submit" onclick="Search()"> <span>Tìm kiếm</span> </button>
+                            </div>
                         </div>
                     </div>
                     <div class="banner-left">
@@ -100,23 +111,24 @@
                     <div class="sort-by">
                         <label>Sắp xếp theo</label>
                         <select name="sort">
-                            <option value="#" selected>Tên</option>
+                            <option value="#" selected>Vị trí</option>
+                            <option value="#">Tên</option>
                             <option value="#">Giá</option>
                         </select>
                         <a href="#" title="Set Descending Direction">
                             <img src="~/Content/img/product/i_asc_arrow.gif" alt="">
                         </a>
                     </div>
-                    @*<div class="limit-product">
-                        <label>Hiện</label>
+                    <div class="limit-product">
+                        @*<label>Hiện</label>
                         <select name="show">
                             <option value="#" selected>6</option>
                             <option value="#">9</option>
                             <option value="#">12</option>
                             <option value="#">15</option>
                         </select>
-                        Mỗi trang
-                    </div>*@
+                        Mỗi trang*@
+                    </div>
                 </div>
                 <div class="row" id="loadsanpham">
                     <div class="product-content">
@@ -127,16 +139,16 @@
                                 {
                                     <div class="col-lg-4 col-sm-6">
                                         <div class="single-product">
-                                                @{
-                                                    if (item.GiaSale == null)
-                                                    {
-                                                        <div class="level-pro-new"><span>Mới</span></div>
-                                                    }
-                                                    else
-                                                    {
-                                                        <div class="level-pro-sale"><span>Sale</span></div>
-                                                    }
+                                            @{
+                                                if (item.GiaSale == null)
+                                                {
+                                                    <div class="level-pro-new"><span>Mới</span></div>
                                                 }
+                                                else
+                                                {
+                                                    <div class="level-pro-sale"><span>Sale</span></div>
+                                                }
+                                            }
                                             <div class="product-img">
                                                 <a href="single-product.html">
                                                     <img src="~/Content/img/Shoes/@item.AnhDaiDien" alt="" class="primary-img">
@@ -185,7 +197,7 @@
                                             <div class="col-sm-4">
                                                 <div class="list-product-img">
                                                     <a href="single-product.html">
-                                                        <img src="~/Content/img/Shoes/@item.AnhDaiDien" alt="" class="primary-img">
+                                                        <img src="~/Content/img/Shoes/@item.AnhDaiDien" alt="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -207,7 +219,7 @@
                                                     </div>
                                                     <div class="list-product-details">
                                                         <p>
-                                                            @item.MoTa
+                                                            Từ lúc tập luyện tới ngày thi đấu, hãy tự tin tiến bước. Đôi giày chạy bộ này tăng cường ổn định nhờ hệ thống adidas LEP 2.0 giúp định hướng từng cú đáp chân và tạo đà tiến về phía trước. Thân giày bằng vải lưới có các vùng cố định tập trung giúp tăng cường nâng đỡ đồng thời duy trì thoáng khí. Lớp đệm BOOST hoàn trả năng lượng và mang lại cảm giác thoải mái giúp bạn luôn cảm thấy sảng khoái trên suốt đường chạy.
                                                             <a href="single-product.html">Tìm hiểu thêm</a>
                                                         </p>
                                                     </div>
@@ -229,7 +241,7 @@
                             <div class="col-md-8 col-sm-8 col-xs-12">
                                 <div class="pagination">
                                     <ul class="page-list">
-                                        <li>@Html.PagedListPager(Model, page => Url.Action("Shop", new { page }))</li>
+                                        <li>@Html.PagedListPager(Model, page => Url.Action("SanPhamTheoDanhMuc", new { page }))</li>
                                     </ul>
                                 </div>
                             </div>
@@ -271,4 +283,3 @@
         });
     }
 </script>
-
