@@ -496,6 +496,8 @@
     <Content Include="Areas\Admin\Views\ManageBrands\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ManageBrands\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ManageBrands\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ManageBrands\Search.cshtml" />
+    <Content Include="Areas\Admin\Views\Search\Search.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

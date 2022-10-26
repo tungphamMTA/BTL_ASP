@@ -15,5 +15,6 @@ namespace Shop1.Areas.Admin.Controllers
         {
             return View();
         }
+
     }
 }

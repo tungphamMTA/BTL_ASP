@@ -109,6 +109,20 @@ namespace Shop1.Areas.Admin.Controllers
             }
 
         }
+        public ActionResult Search(string key)
+        {
+            var con = new DBContext();
+
+
+
+            //var model = con.HangSanXuat.Where(x => x.TenHang.Contains(key)).ToList();
+            //con.HangSanXuat = model;
+            ViewBag.key = key;
+
+
+            return View("~/Areas/Admin/Views/Search/Search.cshtml", con);
+
+        }
     }
 
    

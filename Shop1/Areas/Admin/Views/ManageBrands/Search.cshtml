@@ -1,8 +1,25 @@
 ﻿@using Shop1.Models;
 @model List<HangSanXuat>
 @{
-    ViewBag.Title = "ManageBrandsIndex";
+
     Layout = "~/Areas/Admin/Views/Shared/_LayoutPage1.cshtml";
+}
+
+@{
+    var controllerName = string.Empty;
+    object controllerObj;
+    var actionName = string.Empty;
+    object actionObj;
+
+    if (ViewContext.RouteData.Values.TryGetValue("controller", out controllerObj))
+    {
+        controllerName = controllerObj.ToString();
+    }
+
+    if (ViewContext.RouteData.Values.TryGetValue("action", out actionObj))
+    {
+        actionName = actionObj.ToString();
+    }
 }
 @*<div class="content-wrapper">*@
 <div class="container-fluid">
@@ -24,23 +41,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var item in Model)
-                                {
-                                    <tr>
-                                        <td>@item.HangSX</td>
-                                        <td>@item.TenHang</td>
-                                        <td>@item.TruSoChinh</td>
-                                        <td>@item.QuocGia</td>
-                                        <td data-toggle="tooltip" data-placement="top">
-                                            <button class="btn btn-success btn-sm rounded-0" type="submit" title="Edit">
-                                                <a href="~/Admin/ManageBrands/Edit/@item.HangSX" class="fa fa-edit"></a>
-                                            </button>
-                                            <button class="btn btn-danger btn-sm rounded-0 " type="button" title="Delete" id="@item.HangSX" onclick="Delete('@item.HangSX')">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                }
+                                @{
+                                    <h6>@controllerName</h6>
+                                    //var groups = Model.GroupBy(x => Model.IndexOf(x) / 1).ToList();
+                                    foreach (HangSanXuat item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.HangSX</td>
+                                            <td>@item.TenHang</td>
+                                            <td>@item.TruSoChinh</td>
+                                            <td>@item.QuocGia</td>
+                                            <td data-toggle="tooltip" data-placement="top">
+                                                <button class="btn btn-success btn-sm rounded-0" type="submit" title="Edit">
+                                                    <a href="~/Admin/ManageBrands/Edit/@item.HangSX" class="fa fa-edit"></a>
+                                                </button>
+                                                <button class="btn btn-danger btn-sm rounded-0 " type="button" title="Delete" id="@item.HangSX" onclick="Delete('@item.HangSX')">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    }}
                             </tbody>
                         </table>
                     </div>
@@ -103,3 +123,5 @@
         })
     }
 </script>
+
+
