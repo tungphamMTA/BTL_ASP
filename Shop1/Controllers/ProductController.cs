@@ -7,7 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
-namespace Shoes_Shop.Controllers
+namespace Shop1.Controllers
 {
     public class ProductController : Controller
     {
