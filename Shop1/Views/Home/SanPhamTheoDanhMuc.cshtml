@@ -150,7 +150,7 @@
                                                 }
                                             }
                                             <div class="product-img">
-                                                <a href="single-product.html">
+                                                <a href="@Url.Action("single_product", "Category", new { id = item.MaSP})">
                                                     <img src="~/Content/img/Shoes/@item.AnhDaiDien" alt="" class="primary-img">
                                                     <img src="~/Content/img/Shoes/@item.AnhNen" alt="" class="secondary-img">
                                                 </a>
@@ -164,7 +164,7 @@
                                             </div>
                                             <div class="product-price">
                                                 <div class="product-name">
-                                                    <a href="single-product.html" title="Fusce aliquam">@item.TenSP</a>
+                                                    <a href="~/Category/single_product" title="Fusce aliquam">@item.TenSP</a>
                                                 </div>
                                                 <div class="price-rating">
                                                     @{
@@ -196,14 +196,19 @@
                                         <div class="single-list-product">
                                             <div class="col-sm-4">
                                                 <div class="list-product-img">
+<<<<<<< HEAD:Shop1/Views/Home/SanPhamTheoDanhMuc.cshtml
                                                     <a href="single-product.html">
                                                         <img src="~/Content/img/Shoes/@item.AnhDaiDien" alt="">
+=======
+                                                    <a href="~/Category/single_product">
+                                                        <img src="~/Content/img/product/1.png" alt="">
+>>>>>>> 81dd5d5bf64a7e5dee40bf83c1c1862028ef33d5:Shop1/Views/Category/SanPhamTheoDanhMuc.cshtml
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="col-sm-8">
                                                 <div class="list-product-info">
-                                                    <a href="single-product.html" class="list-product-name">@item.TenSP</a>
+                                                    <a href="~/Category/single_product" class="list-product-name">@item.TenSP</a>
                                                     <div class="price-rating">
                                                         <span class="old-price">$@item.GiaGoc</span>
                                                         <span>$ @item.GiaTien</span>
@@ -220,7 +225,7 @@
                                                     <div class="list-product-details">
                                                         <p>
                                                             Từ lúc tập luyện tới ngày thi đấu, hãy tự tin tiến bước. Đôi giày chạy bộ này tăng cường ổn định nhờ hệ thống adidas LEP 2.0 giúp định hướng từng cú đáp chân và tạo đà tiến về phía trước. Thân giày bằng vải lưới có các vùng cố định tập trung giúp tăng cường nâng đỡ đồng thời duy trì thoáng khí. Lớp đệm BOOST hoàn trả năng lượng và mang lại cảm giác thoải mái giúp bạn luôn cảm thấy sảng khoái trên suốt đường chạy.
-                                                            <a href="single-product.html">Tìm hiểu thêm</a>
+                                                            <a href="~/Category/single_product">Tìm hiểu thêm</a>
                                                         </p>
                                                     </div>
                                                 </div>

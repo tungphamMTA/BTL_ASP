@@ -1,0 +1,241 @@
+﻿
+@using Shop1.Models;
+@model dynamic
+@{
+    ViewBag.Title = "single_product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var category = (Shop1.Models.HangSanXuat)ViewBag.category;
+    DBContext db = new DBContext();
+}
+
+<!-- single product area start -->
+<!-- single product area start -->
+<div class="Single-product-location home2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="location">
+                    <ul>
+                        <li><a href="/Home/Index" title="go to homepage">Home<span>/</span></a>  </li>
+
+                        <li><strong> @category.TenHang</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- single product details start -->
+<div class="single-product-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="single-product-img tab-content">
+                    <div class="single-pro-main-image tab-pane active" id="pro-large-img-1">
+                        <a href="#"><img class="optima_zoom" width="450" src="/Content/img/Shoes/@Model.sanpham.AnhDaiDien" data-zoom-image="/Content/img/Shoes/@Model.sanpham.AnhDaiDien" alt="optima" /></a>
+                    </div>
+                    <div class="single-pro-main-image tab-pane " id="pro-large-img-2">
+                        <a href="#"><img class="optima_zoom" width="450" src="/Content/img/Shoes/@Model.sanpham.AnhNen" data-zoom-image="/Content/img/Shoes/@Model.sanpham.AnhNen" alt="optima" /></a>
+                    </div>
+                </div>
+                <div class="product-page-slider">
+                    <div class="single-product-slider">
+                        <a href="#pro-large-img-1" data-toggle="tab">
+                            <img width="150" height="150" src="/Content/img/Shoes/@Model.sanpham.AnhDaiDien" alt="">
+                        </a>
+                    </div>
+                    <div class="single-product-slider">
+                        <a href="#pro-large-img-2" data-toggle="tab">
+                            <img width="150" height="150" src="/Content/img/Shoes/@Model.sanpham.AnhNen" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="single-product-details">
+                    <a href="#" class="product-name">@Model.sanpham.TenSP</a>
+                    <div class="list-product-info">
+                        <div class="price-rating">
+                            @*<div class="ratings">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-o"></i>
+                                    <a href="#" class="rreveview">1 Review(s)</a>
+                                    <a href="#" class="add-review">Add Your Review</a>
+                                </div>*@
+                        </div>
+                    </div>
+                    <div class="avalable">
+                        <p>Availability:<span> In stock</span></p>
+                    </div>
+                    <div class="price-rating">
+
+                        @if (@Model.sanpham.GiaSale > 0)
+                        {
+                            <span class="old-price">$@Model.sanpham.GiaTien</span>
+                            <span>$@Model.sanpham.GiaSale</span>
+                        }
+                        else
+                        { <span>$@Model.sanpham.GiaTien</span>}
+                    </div>
+                    <div>
+                        <p>@Model.sanpham.MoTa</p>
+                    </div>
+                    <div class="action">
+                        @*<ul class="add-to-links">
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-heart"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-refresh"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-envelope"></i>
+                                    </a>
+                                </li>
+                            </ul>*@
+                    </div>
+                    <form method="post" action="/Cart/AddItem">
+                        <div class="select-catagory">
+                            <label class="required">
+                                Color
+                            </label>
+                            <div class="color-select">
+                                <div class="input-box">
+                                    @foreach (var item in Model.ctsp)
+                                    {
+                                        <input type="radio" id="@item.AnhSP" name="options_outlined" value="@item.Mamau,@Model.sanpham.MaSP" checked>
+                                        <label for="@item.AnhSP">
+                                            <img width="120" height="120" src="/Content/img/Shoes/@item.AnhSP" alt="">
+
+                                        </label>
+                                    }
+                                </div>
+                            </div>
+                            <label class="required">
+                                Size
+                            </label>
+                            <div class="size-select">
+                                <div class="input-box">
+                                    @foreach (var item in Model.size)
+                                    {
+                                        <input type="radio" id="@item.Size" name="select" value="@item.Size" checked>
+                                        <label for="@item.Size">
+                                            @item.Size
+                                        </label>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart-item">
+                            <div class="price-box">
+                                @if (@Model.sanpham.GiaSale > 0)
+                                {
+                                    <span>$@Model.sanpham.GiaSale</span>
+                                }
+                                else
+                                { <span>$@Model.sanpham.GiaTien</span>}
+
+                                <p id="soluong"> </p>
+                                <p>TÙNG SỬ LẠI MẤY CÁI NÀY BẰNG TIẾNG ANH CHO ĐẸP NHA</p>
+                                <p class="text-success">số lượt xem:@Model.sanpham.SoLuotXemSP</p>
+                                <p class="text-success">số lượt lượng còn lại:@Model.sanpham.SoLuong</p>
+                                <p class="text-success">số lượng bán:@Model.sanpham.SoLuongBan</p>
+
+                            </div>
+                            <div class="single-cart">
+                                <div class="cart-plus-minus">
+                                    <label>Qty: </label>
+                                    <input class="cart-plus-minus-box" type="text" name="SoLuong" value="1">
+                                </div>
+                            </div>
+                            @*<form method="get" action="/Home/Cart">*@
+                            @*<button type="submit" class="btn cart-btn">Add to cart</button>*@
+                            @*</form>*@
+                            @{
+                                if (@Session["iduser"] == null)
+                                {
+                                    <h6 style="color:orangered">Login before add to card, please!</h6>
+                                    <div>
+                                        <button style="width: 300px; height: 40px"><a href="/Consumer/Login">Add to cart</a></button>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <h6 style="color:orangered">Choose COLOR and SIZE, please!</h6>
+                                    <div style="width: 100px; height: 50px">
+                                        @*<button type="submit"><a href="/Add-to-cart?IDUser=@Session["iduser"]&MaSP=@Model.sanpham.MaSP&SoLuong=1">Add to cart</a></button>*@
+                                        <input style="width: 300px; height: 40px" type="submit" value="Add to cart" />
+                                    </div>
+                                }
+                            }
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- single product tab start -->
+<!--<div class="single-product-tab-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="single-product-tab">
+                    <ul class="single-product-tab-navigation" role="tablist">
+                        <li role="presentation" class="active"></li>
+                        <li role="presentation"><a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">reviews</a></li>
+                        <li role="presentation"></li>
+                    </ul>-->
+<!-- Tab panes -->
+<!-- related product area start-->
+<div class="new-products-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-title">
+                    <h2>Related products</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="related-slider">
+
+                @Html.Action("Related", "Product", new { @hang = Model.sanpham.HangSX })
+            </div>
+        </div>
+    </div>
+</div>
+<!-- related product area end-->
+
+
+
+
+
+<!-- CHÔ NÀY ĐỂ LẤY SIZE VÀ MÀU NÈ-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {    
+        $("input[type='radio']").change(function () {
+            var select_size = $("input[name='select']:checked").val();
+            var select_color = $("input[name='options_outlined']:checked").val();
+            $("#soluong").text(select_size + "-" + select_color);
+        });
+    });
+</script>
+    

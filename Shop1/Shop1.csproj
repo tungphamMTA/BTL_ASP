@@ -153,8 +153,14 @@
     <Compile Include="Areas\Admin\Controllers\ManageBrandsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageOrdersController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageProductsController.cs" />
+<<<<<<< HEAD
     <Compile Include="Areas\Admin\Controllers\ManageUsersController.cs" />
+=======
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+>>>>>>> 81dd5d5bf64a7e5dee40bf83c1c1862028ef33d5
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -183,6 +189,8 @@
     <Compile Include="Models\tt.cs" />
     <Compile Include="Models\UserGroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\CTDH.cs" />
+    <Compile Include="ViewModel\DetailsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -523,10 +531,21 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Shop.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Home\DanhMucHSXPartial.cshtml" />
     <Content Include="Views\Home\SanPhamTheoDanhMuc.cshtml" />
     <Content Include="Views\Home\DSSanPham.cshtml" />
     <Content Include="Views\Home\BoLocSanPham.cshtml" />
+=======
+    <Content Include="Views\Category\DanhMucHSXPartial.cshtml" />
+    <Content Include="Views\Category\SanPhamTheoDanhMuc.cshtml" />
+    <Content Include="Views\Category\single_product.cshtml" />
+    <Content Include="Views\Product\BestSellerProduct.cshtml" />
+    <Content Include="Views\Product\Related.cshtml" />
+    <Content Include="Views\Product\NewProduct.cshtml" />
+    <Content Include="Views\Product\SaleProduct.cshtml" />
+    <Content Include="Views\Cart\AddItem.cshtml" />
+>>>>>>> 81dd5d5bf64a7e5dee40bf83c1c1862028ef33d5
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

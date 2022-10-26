@@ -1,0 +1,45 @@
+﻿@using Shop1.Models;
+@model List<SanPham>
+@{
+    foreach (SanPham it in Model)
+    {
+        <div class="col-md-12">
+            <div class="single-product">
+
+                <div class="product-img">
+                    <a>
+                        <img src="/Content/img/Shoes/@it.AnhDaiDien" alt="" class="primary-img">
+                        <img src="/Content/img/Shoes/@it.AnhNen" alt="" class="secondary-img">
+                    </a>
+                </div>
+                <div class="product-name">
+                    <a href="@Url.Action("single_product", "Category", new { id = it.MaSP})" title="@it.TenSP">@it.TenSP</a>
+                </div>
+                <div class="price-rating">
+                    @if (it.GiaSale > 0)
+                    {
+                        <span class="old-price">$@it.GiaTien</span>
+                        <span>$@it.GiaSale</span>
+                    }
+                    else
+                    { <span>$@it.GiaTien</span>}
+                    <div class="ratings">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                    </div>
+                </div>
+                <div class="actions">
+                    @*<button type="submit" class="cart-btn" title="Add to cart">add to cart</button>
+                        <ul class="add-to-link">
+                            <li><a class="modal-view" data-target="#productModal" data-toggle="modal" href="#"> <i class="fa fa-search"></i></a></li>
+                            <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
+                            <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
+                        </ul>*@
+                </div>
+            </div>
+        </div>
+    }
+}
