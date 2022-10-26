@@ -15,24 +15,88 @@
     </div>
 </div>
 <!-- slider area end -->
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<div class="another-product-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>BEST SELLER PRODUCTS</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="product-content">
+                @Html.Action("BestSellerProduct", "Product")
+            </div>
+
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+</div>
+<!-- products area end -->
+<!-- feature products area start -->
+<!-- feature products area end -->
+<div class="another-product-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>NEW PRODUCTS</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="product-content">
+                @*<div class="related-slider">*@
+                    @Html.Action("NewProduct", "Product")
+                @*</div>*@
+            </div>
+        </div>
+
+@*<div class="new-products-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-title">
+                    <h2>Related products</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="related-slider">
+
+                @Html.Action("Related", "Product", new { @hang = Model.sanpham.HangSX })
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+</div>*@
+ @*another banner area start*@ 
+<div class="another-banner-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="big-banner">
+                    <a href="#">
+                        <img width=1200 heigth=200 src="~/Content/img/Advertisement/ad4.jpg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- another banner area end -->
+<div class="another-product-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>SALE PRODUCTS</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="product-content">
+                    @Html.Action("SaleProduct", "Product")
+
+            </div>
     </div>
 </div>

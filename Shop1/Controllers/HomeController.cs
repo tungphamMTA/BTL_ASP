@@ -18,9 +18,11 @@ namespace Shop1.Controllers
             public string Value { get; set; }
         }
         DBContext con = new DBContext();
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, int pageSize = 9)
         {
-            return View();
+            List<SanPham> sanPham = con.SanPham.ToList();
+            var model = sanPham.OrderByDescending(x => x.GiaGoc).ToPagedList(page, pageSize);
+            return View(model);
         }
 
         public ActionResult About()

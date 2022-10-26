@@ -1,4 +1,7 @@
-﻿
+﻿@using Shop1.Models;
+@using PagedList.Mvc;
+@using PagedList;
+@model PagedList<HOADON>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutPage1.cshtml";
@@ -6,58 +9,91 @@
 
 
 @*<div class="content-wrapper">*@
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 col-lg-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">List of Orders</h2>
-                        <div class="table-responsive">
-                            <table class="table align-items-center table-flush table-borderless">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Order ID</th>
-                                        <th scope="col">Customer ID</th>
-                                        <th scope="col">Customer Name</th>
-                                        <th scope="col">Product ID</th>
-                                        <th scope="col">Product Name</th>
-                                        <th scope="col">Total Price</th>
-                                        <th scope="col">Shipping Fee</th>
-                                        <th scope="col">Shipping Status</th>
-                                        <th scope="col">Payment Method</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var item in Model)
-                                    {
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    @{
+                        if (ViewBag.task == "Search")
+                        {
+                            <h2 class="card-title">Search for: @ViewBag.key</h2>
+
+                        }
+                        else
+                        {
+                            <h2 class="card-title">List of Orders</h2>
+                        }
+                        if (ViewBag.count == 0)
+                        {
+                            <h3>Không có người dùng nào !</h3>
+
+                        }
+                        else
+                        {
+                            <div class="table-responsive">
+                                <table class="table align-items-center table-flush table-borderless">
+                                    <thead>
                                         <tr>
-                                            <td>@item.MaDH</td>
-                                            <td>@item.MaKH</td>
-                                            <td>@item.HoTen</td>
-                                            <td>@item.MaSP</td>
-                                            <td>@item.TenSP</td>
-                                            <td>@item.TongTien</td>
-                                            <td>@item.PhiVanChuyen</td>
-                                            <td>@item.TinhTrangDH</td>
-                                            <td>@item.PTGiaoDich</td>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Order ID</th>
+                                            <th scope="col">Customer ID</th>
+                                            <th scope="col">Customer Name</th>
+                                            <th scope="col">Product ID</th>
+                                            <th scope="col">Product Name</th>
+                                            <th scope="col">Total Price</th>
+                                            <th scope="col">Shipping Fee</th>
+                                            <th scope="col">Shipping Status</th>
+                                            <th scope="col">Payment Method</th>
                                         </tr>
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@item.MaDH</td>
+                                                <td>@item.MaKH</td>
+                                                <td>@item.HoTen</td>
+                                                <td>@item.MaSP</td>
+                                                <td>@item.TenSP</td>
+                                                <td>@item.TongTien</td>
+                                                <td>@item.PhiVanChuyen</td>
+                                                <td>@item.TinhTrangDH</td>
+                                                <td>@item.PTGiaoDich</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="pagination-bar">
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <div class="text"> Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) của @Model.PageCount</div>
+                                    </div>
+
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <div class="pagination">
+                                            <ul class="page-list">
+                                                <li>@Html.PagedListPager(Model, page => Url.Action(ViewBag.task, new { key = ViewBag.key, page }))</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                    }
                 </div>
             </div>
         </div>
-        <!--End Row-->
-        <!--start overlay-->
-        <div class="overlay toggle-menu"></div>
-        <!--end overlay-->
-
     </div>
-    <!-- End container-fluid-->
+    <!--End Row-->
+    <!--start overlay-->
+    <div class="overlay toggle-menu"></div>
+    <!--end overlay-->
 
+</div>
+<!-- End container-fluid-->
 @*</div>*@
 <script>
     var tables = document.getElementsByTagName('table');

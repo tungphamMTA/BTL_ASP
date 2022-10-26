@@ -27,11 +27,28 @@
     <link href="~/Content/admin/css/sidebar-menu.css" rel="stylesheet" />
     <!-- Custom Style-->
     <link href="~/Content/admin/css/app-style.css" rel="stylesheet" />
+    <!-- Custom Style-->
+    <link href="~/Content/AdminPagedList.css" rel="stylesheet" />
 
 </head>
 
 <body class="bg-theme bg-theme1">
+    @{
+        var controllerName = string.Empty;
+        object controllerObj;
+        var actionName = string.Empty;
+        object actionObj;
 
+        if (ViewContext.RouteData.Values.TryGetValue("controller", out controllerObj))
+        {
+            controllerName = controllerObj.ToString();
+        }
+
+        if (ViewContext.RouteData.Values.TryGetValue("action", out actionObj))
+        {
+            actionName = actionObj.ToString();
+        }
+    }
     <!-- Start wrapper-->
     <div id="wrapper">
 
@@ -58,7 +75,7 @@
                 </li>
 
                 <li>
-                    <a href="/Admin/ManageOrders/Index">
+                    <a href="/Admin/ManageUsers/Index">
                         <i class="zmdi zmdi-format-list-bulleted"></i> <span>Người dùng</span>
                     </a>
                 </li>
@@ -92,9 +109,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <form class="search-bar">
-                            <input type="text" class="form-control" placeholder="Enter keywords">
-                            <a href="javascript:void();"><i class="icon-magnifier"></i></a>
+ 
+                        <form class="search-bar" id="searchForm" method="post" action="/Admin/@controllerName/Search">
+                            <div class="row">
+                                <input type="text" class="form-control" name="key" placeholder="Enter keywords">
+                                <button class="btn btn-success" style="margin-left: 10px;" id="search"><i class="icon-magnifier"></i></button>
+                            </div>
                         </form>
                     </li>
                 </ul>
@@ -329,7 +349,6 @@
                     </div>
                 </div>-->
                 <!--End Row-->
-
                 <!--<div class="row">
                     <div class="col-12 col-lg-12">
                         <div class="card">
@@ -447,7 +466,6 @@
                         </div>
                     </div>
                 </div>-->
-
                 <!--End Row-->
                 <!--End Dashboard Content-->
                 <!--start overlay-->
@@ -530,7 +548,13 @@
 
     <!-- Index js -->
     <script src="~/Content/admin/js/index.js"></script>
-
+    <script type="text/javascript">
+        $(function () {
+            $('a#search').click(function () {
+                $('search-bar#searchForm').submit();
+            });
+        });
+    </script>
 
 </body>
 

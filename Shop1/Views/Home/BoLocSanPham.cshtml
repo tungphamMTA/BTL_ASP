@@ -28,7 +28,7 @@
             <div class="col-md-12">
                 <div class="location">
                     <ul>
-                        <li><a href="index.html" title="go to homepage">Home<span>/</span></a>  </li>
+                        <li><a href="/Home" title="go to homepage">Home<span>/</span></a>  </li>
                         <li><a href="/Home/Shop" title="go to shoppage"><strong> Shop / </strong></li></a>
                         <li><a href="/Home/Shop/@ViewBag.hangsx" title="go to shoppage"><strong> @ViewBag.hangsx </strong></li></a>
                     </ul>
@@ -143,13 +143,16 @@
                                     <div class="col-lg-4 col-sm-6">
                                         <div class="single-product">
                                             @{
-                                                if (item.GiaSale == null)
+                                                if (item.isnew == true)
                                                 {
                                                     <div class="level-pro-new"><span>Mới</span></div>
                                                 }
-                                                else
+                                                else if (item.issale == true)
                                                 {
                                                     <div class="level-pro-sale"><span>Sale</span></div>
+                                                }
+                                                else
+                                                {
                                                 }
                                             }
                                             <div class="product-img">

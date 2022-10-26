@@ -16,13 +16,16 @@
                                     <div class="col-lg-4 col-sm-6">
                                         <div class="single-product">
                                             @{
-                                                if (item.GiaSale == null)
+                                                if (item.isnew == true)
                                                 {
                                                     <div class="level-pro-new"><span>Mới</span></div>
                                                 }
-                                                else
+                                                else if (item.issale == true)
                                                 {
                                                     <div class="level-pro-sale"><span>Sale</span></div>
+                                                }
+                                                else
+                                                {
                                                 }
                                             }
                                             <div class="product-img">
@@ -35,7 +38,6 @@
                                                 <button type="submit" class="cart-btn" title="Add to cart">Add to cart</button>
                                                 <ul class="add-to-link">
                                                     <li><a class="modal-view" data-target="#productModal" data-toggle="modal" href="#"> <i class="fa fa-search"></i></a></li>
-                                                    <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
                                                     <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
                                                 </ul>
                                             </div>
@@ -44,7 +46,13 @@
                                                     <a href="single-product.html" title="Fusce aliquam">@item.TenSP</a>
                                                 </div>
                                                 <div class="price-rating">
-                                                    <span>$@item.GiaTien</span>
+                                                    @{
+                                                        if (item.GiaSale != null)
+                                                        {
+                                                            <span class="old-price">$@item.GiaGoc</span>
+                                                        }
+                                                    }
+                                                    <span>$ @item.GiaTien</span>
                                                     <div class="ratings">
                                                         <i class="fa fa-star"></i>
                                                         <i class="fa fa-star"></i>

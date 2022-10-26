@@ -4,17 +4,21 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Shop1.Models;
+using PagedList;
 
 namespace Shop1.Areas.Admin.Controllers
 {
     public class ManageBrandsController : Controller
     {
         // GET: Admin/ManageBrands
-        public ActionResult Index()
+        public ActionResult Index(string key = "", int page = 1)
         {
             using (var con = new DBContext())
             {
-                var model = con.HangSanXuat.ToList();
+                var model = con.HangSanXuat.ToList().ToPagedList(page, 10);
+                ViewBag.count = model.Count;
+                ViewBag.task = "Index";
+                ViewBag.controller = "ManageBrands";
                 return View(model);
             }
         }
@@ -93,6 +97,23 @@ namespace Shop1.Areas.Admin.Controllers
             {
                 return Json(new { message = "Fail!" }, JsonRequestBehavior.AllowGet);
             }
+        }
+
+        public ActionResult Search(string key, int page = 1)
+        {
+            using (DBContext con = new DBContext())
+            {
+
+                ViewBag.Key = key;
+                var objs = con.HangSanXuat.Where(x => x.TenHang.Contains(key) || x.TruSoChinh.Contains(key) || x.QuocGia.Contains(key)).ToList();
+
+                var model = objs.OrderByDescending(x => x.HangSX).ToPagedList(page, 10);
+                ViewBag.count = model.Count;
+                ViewBag.task = "Search";
+                ViewBag.controller = "ManageProducts";
+                return View("Index", model);
+            }
+
         }
     }
 }

@@ -1,0 +1,201 @@
+﻿
+@using Shop1.Models;
+@model DBContext
+@{
+
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+@*<div class="content-wrapper">*@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">List of Brands</h2>
+                    <button type="submit" class="btn btn-success"><a href="~/Admin/ManageBrands/Create/">Add</a></button>
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush table-borderless">
+
+
+                            @{ string key = ViewBag.key;
+                                //var groups = Model.GroupBy(x => Model.IndexOf(x) / 1).ToList();
+                                var controllerName = string.Empty;
+                                object controllerObj;
+
+
+                                if (ViewContext.RouteData.Values.TryGetValue("controller", out controllerObj))
+                                {
+                                    controllerName = controllerObj.ToString();
+                                }
+
+
+                                if (controllerName == "ManageBrands")
+                                {
+                                    @:<thead>
+                                        @:  <tr>
+                                            @:   <th scope="col">Mã thương hiệu</th>
+                                            @:  <th scope="col">Tên thương hiệu</th>
+                                            @:  <th scope="col">Trụ sở chính</th>
+                                            @: <th scope="col">Quốc gia</th>
+                                            @:  <th scope="col">Tùy chọn</th>
+                                        @:    </tr>
+                                    @:  </thead>
+                                    @:  <tbody>
+                                        var group = (from s in Model.HangSanXuat where s.HangSX.Contains(key) || s.TruSoChinh.Contains(key) || s.QuocGia.Contains(key) || s.TenHang.Contains(key) select s).ToList();
+                                        //Model.HangSanXuat.Where(x => x.TenHang.Contains(key)).ToList()  ;
+                                        foreach (var item in group)
+                                        {
+                                            <tr>
+
+
+                                                <td>@item.HangSX</td>
+                                                <td>@item.TenHang</td>
+                                                <td>@item.TruSoChinh</td>
+                                                <td>@item.QuocGia</td>
+                                                <td data-toggle="tooltip" data-placement="top">
+                                                    <button class="btn btn-success btn-sm rounded-0" type="submit" title="Edit">
+                                                        <a href="~/Admin/ManageBrands/Edit/@item.HangSX" class="fa fa-edit"></a>
+                                                    </button>
+                                                    <button class="btn btn-danger btn-sm rounded-0 " type="button" title="Delete" id="@item.HangSX" onclick="Delete('@item.HangSX')">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                    else if (controllerName == "ManageOrders")
+                                    {
+                                        @: <thead>
+                                        @: <tr>
+                                            @:   <th scope="col">#</th>
+                                            @:   <th scope="col">Order ID</th>
+                                            @:  <th scope="col">Customer ID</th>
+                                            @:  <th scope="col">Customer Name</th>
+                                            @: <th scope="col">Product ID</th>
+                                            @: <th scope="col">Product Name</th>
+                                            @: <th scope="col">Total Price</th>
+                                            @: <th scope="col">Shipping Fee</th>
+                                            @:  <th scope="col">Shipping Status</th>
+                                            @:   <th scope="col">Payment Method</th>
+                                        @:   </tr>
+                                    @:  </thead>
+                                    @: <tbody>
+                                        var group = (from s in Model.HOADON where s.PTGiaoDich.Contains(key) || s.MaKH.Contains(key) || s.HoTen.Contains(key) || s.MaDH.Contains(key) || s.MaSP.Contains(key) || s.PhiVanChuyen.ToString().Contains(key) || s.TongTien.ToString().Contains(key) || s.MaKH.Contains(key) select s).ToList();
+
+                                        foreach (var item in group)
+                                        {
+                                            <tr>
+                                                <td>@item.MaDH</td>
+                                                <td>@item.MaKH</td>
+                                                <td>@item.HoTen</td>
+                                                <td>@item.MaSP</td>
+                                                <td>@item.TenSP</td>
+                                                <td>@item.TongTien</td>
+                                                <td>@item.PhiVanChuyen</td>
+                                                <td>@item.TinhTrangDH</td>
+                                                <td>@item.PTGiaoDich</td>
+                                            </tr>
+                                        }
+                                    }
+                                    else if (controllerName == "ManageProducts")
+                                    {
+                                        @:
+                                    <thead>
+                                        @: <tr>
+                                            @:     <th scope="col">Mã sản phẩm</th>
+                                            @:     <th scope="col">Tên sản phẩm</th>
+                                            @:      <th scope="col">Xuất xứ</th>
+                                            @:     <th scope="col">Giá gốc</th>
+                                            @:    <th scope="col">Giá tiền</th>
+                                            @:   <th scope="col">Số lượng</th>
+                                            @:   <th scope="col">Lựa chọn</th>
+                                        @:    </tr>
+                                    @:  </thead>
+                                    @:  <tbody>
+                                        var group = (from s in Model.SanPham where s.MaSP.Contains(key) || s.TenSP.Contains(key) || s.HangSX.Contains(key) || s.XuatXu.Contains(key) || s.GiaGoc.ToString().Contains(key) || s.GiaTien.ToString().Contains(key) || s.SoLuong.ToString().Contains(key) select s).ToList();
+
+                                        foreach (var item in group)
+                                        {
+                                            @: <tr>
+                                                @:     <td>@item.MaSP</td>
+                                                @:    <td>@item.TenSP</td>
+                                                @:    <td>@item.XuatXu</td>
+                                                @:    <td>@item.GiaGoc</td>
+                                                @:    <td>@item.GiaTien</td>
+                                                @:    <td>@item.SoLuong</td>
+                                                @:   <td data-toggle="tooltip" data-placement="top">
+                                                    @:       <button class="btn btn-success btn-sm rounded-0" type="submit" title="Sửa thông tin">
+                                                        @:           <a href="~/Admin/ManageProducts/Edit/@item.MaSP" class="fa fa-edit"></a>
+                                                    @:       </button>
+                                                    @:      <button class="btn btn-danger btn-sm rounded-0 " type="button" title="Xóa sản phẩm" id="@item.MaSP" onclick="Delete('@item.MaSP')">
+                                                        @:           <i class="fa fa-trash"></i>
+                                                    @: </button>
+                                                @: </td>
+                                            @: </tr>
+                                        }
+                                    }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Row-->
+<!--start overlay-->
+<div class="overlay toggle-menu"></div>
+<!--end overlay-->
+
+</div>
+<!-- End container-fluid-->
+@*</div>*@
+
+<script src="~/Content/admin/js/JavaScript.js"></script>
+<script>
+    function Delete(ID) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "/Admin/ManageBrands/Delete",
+                    type: "POST",
+                    data: { id: ID },
+                    success: function (response) {
+                        console.log(response);
+                        if (response.message == "Success!") {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'SUCCESSFUL',
+                                text: 'Delete successfully!',
+                            })
+                            setTimeout(window.location.reload(), 10000);
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'OOPS',
+                                text: 'Something went wrong!'
+                            })
+                        }
+                    },
+                    error: function (err) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'OOPS',
+                            text: err
+                        })
+                    }
+                });
+            }
+        })
+    }
+</script>

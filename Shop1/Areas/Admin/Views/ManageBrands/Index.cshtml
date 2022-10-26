@@ -1,5 +1,7 @@
 ﻿@using Shop1.Models;
-@model List<HangSanXuat>
+@using PagedList.Mvc;
+@using PagedList;
+@model PagedList<HangSanXuat>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutPage1.cshtml";
@@ -11,40 +13,74 @@
             <div class="col-12 col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h2 class="card-title">List of Brands</h2>
-                        <button type="submit" class="btn btn-success"><a href="~/Admin/ManageBrands/Create/">Add</a></button>
-                        <div class="table-responsive">
-                            <table class="table align-items-center table-flush table-borderless">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Mã thương hiệu</th>
-                                        <th scope="col">Tên thương hiệu</th>
-                                        <th scope="col">Trụ sở chính</th>
-                                        <th scope="col">Quốc gia</th>
-                                        <th scope="col">Tùy chọn</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var item in Model)
-                                    {
-                                        <tr>
-                                            <td>@item.HangSX</td>
-                                            <td>@item.TenHang</td>
-                                            <td>@item.TruSoChinh</td>
-                                            <td>@item.QuocGia</td>
-                                            <td data-toggle="tooltip" data-placement="top">
-                                                <button class="btn btn-success btn-sm rounded-0" type="submit" title="Edit">
-                                                    <a href="~/Admin/ManageBrands/Edit/@item.HangSX" class="fa fa-edit"></a>
-                                                </button>
-                                                <button class="btn btn-danger btn-sm rounded-0 " type="button" title="Delete" id="@item.HangSX" onclick="Delete('@item.HangSX')">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-}
-                                </tbody>
-                            </table>
-                        </div>
+                        @{
+                            if (ViewBag.task == "Search")
+                            {
+                                <h2 class="card-title">Search for: @ViewBag.key</h2>
+                            }
+                            else
+                            {
+                                <h2 class="card-title">List of Brands</h2>
+                                <button type="submit" class="btn btn-success"><a href="~/Admin/ManageBrands/Create/">Thêm mới</a></button>
+                            }
+                            if (ViewBag.count == 0)
+                            {
+                                <h3>Không có sản phẩm nào !</h3>
+
+                            }
+                            else
+                            {
+                                <div class="table-responsive">
+                                    <table class="table align-items-center table-flush table-borderless">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Mã thương hiệu</th>
+                                                <th scope="col">Tên thương hiệu</th>
+                                                <th scope="col">Trụ sở chính</th>
+                                                <th scope="col">Quốc gia</th>
+                                                <th scope="col">Tùy chọn</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>@item.HangSX</td>
+                                                    <td>@item.TenHang</td>
+                                                    <td>@item.TruSoChinh</td>
+                                                    <td>@item.QuocGia</td>
+                                                    <td data-toggle="tooltip" data-placement="top">
+                                                        <button class="btn btn-primary btn-sm rounded-0" type="submit" title="Edit">
+                                                            <a href="~/Admin/ManageBrands/Edit/@item.HangSX" class="fa fa-edit"></a>
+                                                        </button>
+                                                        <button class="btn btn-danger btn-sm rounded-0 " type="button" title="Delete" id="@item.HangSX" onclick="Delete('@item.HangSX')">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <div class="pagination-bar">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                            <div class="text"> Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) của @Model.PageCount</div>
+                                        </div>
+
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <div class="pagination">
+                                                <ul class="page-list">
+                                                    <li>@Html.PagedListPager(Model, page => Url.Action(ViewBag.task, new { key = ViewBag.key, page }))</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                        }
                     </div>
                 </div>
             </div>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Shop1.Models;
 using System.Web.Mvc;
+using PagedList;
 
 namespace Shop1.Areas.Admin.Controllers
 {
@@ -11,11 +12,16 @@ namespace Shop1.Areas.Admin.Controllers
     {
         // GET: Admin/ManageProducts
         //public DBContext con = new DBContext();
-        public ActionResult Index()
+        public ActionResult Index(string key = "", int page=1)
         {
             using (var con = new DBContext())
             {
-                var model = con.SanPham.ToList();
+                var objs = con.SanPham.ToList();
+
+                var model = objs.OrderByDescending(x => x.MaSP).ToPagedList(page, 10);
+                ViewBag.count = model.Count;
+                ViewBag.task = "Index";
+                ViewBag.controller = "ManageProducts";
                 return View(model);
             }
         }
@@ -106,6 +112,22 @@ namespace Shop1.Areas.Admin.Controllers
             {
                 return Json(new { message = "Fail!" }, JsonRequestBehavior.AllowGet);
 
+            }
+
+        }
+        public ActionResult Search(string key, int page=1)
+        {
+            using (DBContext con = new DBContext())
+            {
+
+                ViewBag.Key = key;
+                var objs = con.SanPham.Where(x => x.TenSP.Contains(key) || x.XuatXu.Contains(key) || x.MoTa.Contains(key)).ToList();
+
+                var model = objs.OrderByDescending(x => x.MaSP).ToPagedList(page, 10);
+                ViewBag.count = model.Count;
+                ViewBag.task = "Search";
+                ViewBag.controller = "ManageProducts";
+                return View("Index", model);
             }
 
         }

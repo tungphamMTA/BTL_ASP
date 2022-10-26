@@ -15,7 +15,7 @@
             <div class="col-md-12">
                 <div class="location">
                     <ul>
-                        <li><a href="index.html" title="go to homepage">Home<span>/</span></a>  </li>
+                        <li><a href="/Home" title="go to homepage">Home<span>/</span></a>  </li>
                         <li><a href="/Home/Shop" title="go to shoppage"><strong> Shop /</strong></li></a>
                     </ul>
                 </div>
@@ -138,7 +138,7 @@
                                                     }
                                                 }
                                             <div class="product-img">
-                                                <a href="single-product.html">
+                                                <a href="@Url.Action("SingleProduct", "Product", new { id = item.MaSP})">
                                                     <img src="~/Content/img/Shoes/@item.AnhDaiDien" alt="" class="primary-img">
                                                     <img src="~/Content/img/Shoes/@item.AnhNen" alt="" class="secondary-img">
                                                 </a>
@@ -184,7 +184,7 @@
                                         <div class="single-list-product">
                                             <div class="col-sm-4">
                                                 <div class="list-product-img">
-                                                    <a href="single-product.html">
+                                                    <a href="href="@Url.Action("SingleProduct", "Product", new { id = item.MaSP})"">
                                                         <img src="~/Content/img/Shoes/@item.AnhDaiDien" alt="" class="primary-img">
                                                     </a>
                                                 </div>

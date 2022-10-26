@@ -1006,12 +1006,12 @@ body {
     font-family: "Montserrat",sans-serif;
 }
 .price-rating span.old-price {
-    font-size: 12px;
+    font-size: 17px;
     margin-right: 5px;
     text-decoration: line-through;
 }
 .price-rating span {
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 700;
     font-family: "Montserrat",sans-serif;
 }
@@ -1020,7 +1020,7 @@ body {
 }
 .single-product .ratings i {
     color: #ffb21e;
-    font-size: 12px;
+    font-size: 17px;
 }
 .single-product .actions {
     border-bottom: 1px solid #e6e6e6;
@@ -1292,6 +1292,7 @@ body {
 .new-product.home2 {
     padding-bottom: 40px;
     padding-top: 50px;
+    background-color: transparent;
 }
 
 /*----------------------------------------*/

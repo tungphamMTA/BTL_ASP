@@ -155,36 +155,39 @@
     <Compile Include="Areas\Admin\Controllers\ManageProductsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageUsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AspNetUsers.cs" />
-    <Compile Include="Models\BinhLuan.cs" />
-    <Compile Include="Models\Cart.cs" />
-    <Compile Include="Models\ChiTietDonHang.cs" />
-    <Compile Include="Models\Comment.cs" />
-    <Compile Include="Models\Credential.cs" />
-    <Compile Include="Models\CTSP.cs" />
-    <Compile Include="Models\DanhsachdangkisanphamNCC.cs" />
-    <Compile Include="Models\DBContext.cs" />
-    <Compile Include="Models\DonHangKH.cs" />
-    <Compile Include="Models\HangSanXuat.cs" />
-    <Compile Include="Models\HOADON.cs" />
-    <Compile Include="Models\HopDongNCC.cs" />
-    <Compile Include="Models\KhuyenMai.cs" />
-    <Compile Include="Models\Mau.cs" />
-    <Compile Include="Models\NhaCungCap.cs" />
-    <Compile Include="Models\Role.cs" />
-    <Compile Include="Models\SanPham.cs" />
-    <Compile Include="Models\Sanphamcanmua.cs" />
-    <Compile Include="Models\SanPhamKhuyenMai.cs" />
-    <Compile Include="Models\SLB.cs" />
-    <Compile Include="Models\ThongSo.cs" />
-    <Compile Include="Models\tt.cs" />
-    <Compile Include="Models\UserGroup.cs" />
+    <Compile Include="Models\Contexts\AspNetUsers.cs" />
+    <Compile Include="Models\Contexts\BinhLuan.cs" />
+    <Compile Include="Models\Contexts\Cart.cs" />
+    <Compile Include="Models\Contexts\ChiTietDonHang.cs" />
+    <Compile Include="Models\Contexts\Comment.cs" />
+    <Compile Include="Models\Contexts\Credential.cs" />
+    <Compile Include="Models\Contexts\CTSP.cs" />
+    <Compile Include="Models\Contexts\DanhsachdangkisanphamNCC.cs" />
+    <Compile Include="Models\Contexts\DBContext.cs" />
+    <Compile Include="Models\Contexts\DonHangKH.cs" />
+    <Compile Include="Models\Contexts\HangSanXuat.cs" />
+    <Compile Include="Models\Contexts\HOADON.cs" />
+    <Compile Include="Models\Contexts\HopDongNCC.cs" />
+    <Compile Include="Models\Contexts\KhuyenMai.cs" />
+    <Compile Include="Models\Contexts\Mau.cs" />
+    <Compile Include="Models\Contexts\NhaCungCap.cs" />
+    <Compile Include="Models\Contexts\Role.cs" />
+    <Compile Include="Models\Contexts\SanPham.cs" />
+    <Compile Include="Models\Contexts\Sanphamcanmua.cs" />
+    <Compile Include="Models\Contexts\SanPhamKhuyenMai.cs" />
+    <Compile Include="Models\Contexts\SLB.cs" />
+    <Compile Include="Models\Contexts\ThongSo.cs" />
+    <Compile Include="Models\Contexts\tt.cs" />
+    <Compile Include="Models\Contexts\UserGroup.cs" />
+    <Compile Include="Models\DetailModels\ThongTinSanPham.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AdminPagedList.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -497,6 +500,7 @@
     <Content Include="Areas\Admin\Views\ManageBrands\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ManageBrands\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ManageUsers\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Search\Search.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -527,6 +531,9 @@
     <Content Include="Views\Home\SanPhamTheoDanhMuc.cshtml" />
     <Content Include="Views\Home\DSSanPham.cshtml" />
     <Content Include="Views\Home\BoLocSanPham.cshtml" />
+    <Content Include="Views\Product\ProductCard.cshtml" />
+    <Content Include="Views\Product\SingleProduct.cshtml" />
+    <Content Include="Views\Product\Related.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

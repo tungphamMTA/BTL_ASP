@@ -1,71 +1,105 @@
 ﻿@using Shop1.Models;
-@model List<AspNetUsers>
+@using PagedList.Mvc;
+@using PagedList;
+@model PagedList<AspNetUsers>
 @{
     ViewBag.Title = "Users";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutPage1.cshtml";
 }
 
 @*<div class="content-wrapper">*@
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 col-lg-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">List of Users</h5>
-                        <div class="table-responsive">
-                            <table class="table align-items-center table-flush table-borderless">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Username</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">DOB</th>
-                                        <th scope="col">Gender</th>
-                                        <th scope="col">Address</th>
-                                        <th scope="col">Phone Number</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var item in Model)
-                                    {
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    @{
+                        if (ViewBag.task == "Index")
+                        {
+                                        <h2 class="card-title">List of Users</h2>
+                        }
+                        else
+                        {
+                <h2 class="card-title">Search for: @ViewBag.key</h2>
+                        }
+                        if (ViewBag.count == 0)
+                        {
+                            <h3>Không có người dùng nào !</h3>
+
+                        }
+                        else
+                        {
+                            <div class="table-responsive">
+                                <table class="table align-items-center table-flush table-borderless">
+                                    <thead>
                                         <tr>
-                                            <td>@item.UserName</td>
-                                            <td>@item.HoTen</td>
-                                            @if (@item.NgaySinh == null)
-                                            {
-                                                <td></td>
-                                            }
-                                            else
-                                            {
-                                                <td>@item.NgaySinh.Value.ToString("dd/MM/yyyy")</td>
-                                            }
-                                            <td>@item.GioiTinh</td>
-                                            <td>@item.DiaChi</td>
-                                            <td>@item.SDT</td>
-                                            <td data-toggle="tooltip" data-placement="top">
-                                                @*<button class="btn btn-success btn-sm rounded-0" type="submit" title="Info">
-                                                        <a href="~/Admin/ManageUsers/ShowDetailUser/@item.IDUser" class="fa fa-info"></a>
-                                                    </button>*@
-
-                                            </td>
-
+                                            <th scope="col">#</th>
+                                            <th scope="col">Username</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">DOB</th>
+                                            <th scope="col">Gender</th>
+                                            <th scope="col">Address</th>
+                                            <th scope="col">Phone Number</th>
                                         </tr>
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@item.UserName</td>
+                                                <td>@item.HoTen</td>
+                                                @if (@item.NgaySinh == null)
+                                                {
+                                                    <td></td>
+                                                }
+                                                else
+                                                {
+                                                    <td>@item.NgaySinh.Value.ToString("dd/MM/yyyy")</td>
+                                                }
+                                                <td>@item.GioiTinh</td>
+                                                <td>@item.DiaChi</td>
+                                                <td>@item.SDT</td>
+                                                <td data-toggle="tooltip" data-placement="top">
+                                                    @*<button class="btn btn-success btn-sm rounded-0" type="submit" title="Info">
+                                                            <a href="~/Admin/ManageUsers/ShowDetailUser/@item.IDUser" class="fa fa-info"></a>
+                                                        </button>*@
+
+                                                </td>
+
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="pagination-bar">
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <div class="text"> Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) của @Model.PageCount</div>
+                                    </div>
+
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <div class="pagination">
+                                            <ul class="page-list">
+                                                <li>@Html.PagedListPager(Model, page => Url.Action(ViewBag.task, new { key = ViewBag.key, page }))</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                    }
                 </div>
             </div>
         </div>
-        <!--End Row-->
-        <!--start overlay-->
-        <div class="overlay toggle-menu"></div>
-        <!--end overlay-->
-
     </div>
-    <!-- End container-fluid-->
+    <!--End Row-->
+    <!--start overlay-->
+    <div class="overlay toggle-menu"></div>
+    <!--end overlay-->
 
+</div>
+<!-- End container-fluid-->
 @*</div>*@
 <script src="~/Content/admin/js/JavaScript.js"></script>
 <script>
