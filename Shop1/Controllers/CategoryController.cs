@@ -6,7 +6,8 @@ using System.Linq;
 using PagedList;
 using System.Web;
 using System.Web.Mvc;
-
+using System.Dynamic;
+using Shop1.ViewModel;
 namespace Shop1.Controllers
 {
     
@@ -18,6 +19,8 @@ namespace Shop1.Controllers
         {
             public string Text { get; set; }
             public string Value { get; set; }
+
+
         }
         public ActionResult Index()
         {
@@ -54,5 +57,24 @@ namespace Shop1.Controllers
             var model = sanphams.OrderByDescending(x => x.GiaGoc).ToPagedList(page, pageSize);
             return PartialView(model);
         }
+
+
+
+        //them code doan nay nha
+        public ActionResult single_product(string id)
+        {
+
+
+
+            dynamic model = new ExpandoObject();
+            model.sanpham = new DetailsViewModel().SPViewDetail(id);
+            ViewBag.category = new DetailsViewModel().HViewDetail(model.sanpham.HangSX);
+            model.ctsp = new DetailsViewModel().listCTSP(id);
+            model.size = new DetailsViewModel().listSize(id);
+            model.listSP = con.SanPham.ToList();
+            return View(model);
+
+        }
+
     }
 }

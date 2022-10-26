@@ -130,10 +130,11 @@
                                             <span>Mới</span>
                                         </div>
                                         <div class="product-img">
-                                            <a href="single-product.html">
-                                                <img src="~/Content/img/Shoes/@item.AnhDaiDien" alt="" class="primary-img">
-                                                <img src="~/Content/img/Shoes/@item.AnhNen" alt="" class="secondary-img">
-                                            </a>
+
+                                                <a href="@Url.Action("single_product", "Category", new { id = item.MaSP})">
+                                                    <img src="~/Content/img/Shoes/@item.AnhDaiDien" alt="" class="primary-img">
+                                                    <img src="~/Content/img/Shoes/@item.AnhNen" alt="" class="secondary-img">
+                                                </a>
                                         </div>
                                         <div class="actions">
                                             <button type="submit" class="cart-btn" title="Add to cart">Thêm vào giỏ hàng</button>

@@ -1,0 +1,63 @@
+﻿@using Shop1.Models;
+@model List<SanPham>
+
+@foreach (SanPham item in Model)
+{
+    <div class="col-lg-4 col-sm-6">
+        <div class="single-product">
+            <div class="level-pro-new">
+                <span>sale</span>
+            </div>
+            <div class="product-img">
+                <a href="@Url.Action("single_product", "Category", new { id = item.MaSP})">
+                    <img src="/Content/img/Shoes/@item.AnhDaiDien" alt="" class="primary-img">
+                    <img src="/Content/img/Shoes/@item.AnhNen" alt="" class="secondary-img">
+                </a>
+            </div>
+            <div class="actions">
+                @*<button type="submit" class="cart-btn" title="Add to cart">
+                        add to
+                        cart
+                    </button>
+                    <ul class="add-to-link">
+                        <li>
+                            <a class="modal-view" data-target="#productModal"
+                               data-toggle="modal" href="#">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
+                        <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
+                        <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
+                    </ul>*@
+            </div>
+            <div class="product-price">
+                <div class="product-name">
+                    <a>
+                        @Html.ActionLink(item.TenSP, "single_product", "Category", new { id = item.MaSP }, null)
+                    </a>
+                </div>
+                <div class="price-rating">
+
+                    @if (item.GiaSale > 0)
+                    {
+                        <span class="old-price">$@item.GiaTien</span>
+                        <span>$@item.GiaSale</span>
+                    }
+                    else
+                    { <span>$@item.GiaTien</span>}
+                    <div class="ratings">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
