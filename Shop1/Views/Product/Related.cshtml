@@ -13,7 +13,7 @@
                     </a>
                 </div>
                 <div class="product-name">
-                    <a href="single-product.html"" title="@it.TenSP">@it.TenSP</a>
+                    <a href="@Url.Action("Details", "Home", new { id = it.MaSP})" title="@it.TenSP">@it.TenSP</a>
                 </div>
                 <div class="price-rating">
                     @if (it.GiaSale > 0)

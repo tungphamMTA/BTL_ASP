@@ -13,7 +13,7 @@
                     <span>new</span>
                 </div>
                 <div class="product-img">
-                    <a href="single-product.html">
+                    <a href="@Url.Action("Details", "Home", new { id = item.MaSP})">
                         <img src="/Content/img/Shoes/@item.AnhDaiDien" alt="" class="primary-img">
                         <img src="/Content/img/Shoes/@item.AnhNen" alt="" class="secondary-img">
                     </a>
@@ -37,7 +37,7 @@
                 <div class="product-price">
                     <div class="product-name">
                         <a>
-                            href="single-product.html"
+                            @Html.ActionLink(item.TenSP, "Details", "Home", new { id = item.MaSP }, null)
                         </a>
                     </div>
                     <div class="price-rating">
